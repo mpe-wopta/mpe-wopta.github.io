@@ -24,15 +24,6 @@ on:
       activities:
         description: "Comma-separated list of activities"
         required: true
-      organizer_name:
-        description: "Name of the organizer"
-        required: true
-      email:
-        description: "Email of the organizer"
-        required: true
-      phone:
-        description: "Phone number of the organizer"
-        required: true
       additional_notes:
         description: "Additional notes"
         required: false
