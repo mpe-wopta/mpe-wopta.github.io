@@ -1,0 +1,79 @@
+name: Scaffold Event File
+
+on:
+  workflow_dispatch:
+    inputs:
+      event_name:
+        description: "Name of the event"
+        required: true
+      date:
+        description: "Date of the event"
+        required: true
+      time:
+        description: "Time of the event"
+        required: true
+      venue:
+        description: "Venue of the event"
+        required: true
+      address:
+        description: "Address of the venue"
+        required: true
+      description:
+        description: "Description of the event"
+        required: true
+      activities:
+        description: "Comma-separated list of activities"
+        required: true
+      organizer_name:
+        description: "Name of the organizer"
+        required: true
+      email:
+        description: "Email of the organizer"
+        required: true
+      phone:
+        description: "Phone number of the organizer"
+        required: true
+      additional_notes:
+        description: "Additional notes"
+        required: false
+
+jobs:
+  scaffold-file:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Mustache CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y npm
+          npm install -g mustache
+
+      - name: Generate event file
+        run: |
+          mkdir -p events
+          echo "${{ github.event.inputs.activities }}" | tr ',' '\n' > activities.txt
+          mustache <<EOF > events/${{ github.event.inputs.event_name }}.md
+          {
+            "event_name": "${{ github.event.inputs.event_name }}",
+            "date": "${{ github.event.inputs.date }}",
+            "time": "${{ github.event.inputs.time }}",
+            "venue": "${{ github.event.inputs.venue }}",
+            "address": "${{ github.event.inputs.address }}",
+            "description": "${{ github.event.inputs.description }}",
+            "activities": $(cat activities.txt | jq -R -s -c 'split("\n")[:-1]'),
+            "organizer_name": "${{ github.event.inputs.organizer_name }}",
+            "email": "${{ github.event.inputs.email }}",
+            "phone": "${{ github.event.inputs.phone }}",
+            "additional_notes": "${{ github.event.inputs.additional_notes }}"
+          }
+          EOF
+
+      - name: Commit and create pull request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: "Add event file for ${{ github.event.inputs.event_name }}"
+          branch: "scaffold/${{ github.event.inputs.event_name }}"
+          title: "Add event file for ${{ github.event.inputs.event_name }}"
+          body: "This PR adds a new event file for ${{ github.event.inputs.event_name }}."
