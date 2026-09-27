@@ -7,11 +7,17 @@ description: Every West Orange PTA's events, the district calendar, and communit
 
 # West Orange PTA calendars
 
-{%- assign live = site.data.calendars | where_exp: "c", "c.google_id" -%}
-{%- assign pending = site.data.calendars | where_exp: "c", "c.google_id == nil and c.ics == nil" -%}
+{%- comment -%}
+GitHub Pages builds with Jekyll 3.10, whose where_exp filter cannot take "and"/"or" or a bare
+variable, so both lists are built with plain for/if loops (core Liquid only).
+{%- endcomment -%}
 {%- capture srcs -%}
-  {%- for c in live -%}&src={{ c.google_id | url_encode }}&color={{ c.color | url_encode }}{%- endfor -%}
+  {%- for c in site.data.calendars -%}{%- if c.google_id -%}&src={{ c.google_id | url_encode }}&color={{ c.color | url_encode }}{%- endif -%}{%- endfor -%}
 {%- endcapture -%}
+{%- capture pending_raw -%}
+  {%- for c in site.data.calendars -%}{%- if c.google_id == nil and c.ics == nil -%}{{ c.name }}|{%- endif -%}{%- endfor -%}
+{%- endcapture -%}
+{%- assign pending = pending_raw | split: "|" -%}
 
 One calendar for the whole district: each PTA's events in its own color, plus the school district's calendar and selected community schedules. Use the dropdown in the top-right of the calendar to show or hide individual calendars.
 
@@ -67,5 +73,5 @@ This calendar is a free service run by Mount Pleasant PTA for the {{ site.org.co
 
 {%- if pending.size > 0 %}
 
-Calendars still to be set up: {% for c in pending %}{{ c.name }}{% unless forloop.last %}, {% endunless %}{% endfor %}.
+Calendars still to be set up: {{ pending | join: ", " }}.
 {%- endif %}

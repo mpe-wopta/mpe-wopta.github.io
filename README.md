@@ -15,7 +15,7 @@ bundle install
 bundle exec jekyll serve
 ```
 
-GitHub Pages builds the site on push to `main`.
+GitHub Pages builds the site on push to `main` with its own Jekyll 3.10 (the `github-pages` gem), not the Jekyll 4 in `Gemfile.lock`. Liquid that only Jekyll 4 accepts (for example `where_exp` with `and`/`or`) passes locally and breaks the Pages build, so keep templates to core Liquid: `for`/`if`/`capture`/`split`/`join`. To check against the real thing, `gem install jekyll -v 3.10.0` and build with `jekyll _3.10.0_ build`.
 
 ## Maintaining the shared calendars
 
