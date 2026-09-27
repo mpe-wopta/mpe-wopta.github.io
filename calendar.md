@@ -2,30 +2,27 @@
 layout: default
 title: District calendar
 permalink: /calendar/
-description: Every West Orange PTA's events, the district calendar, and community feeds in one place.
+description: An experiment in showing every West Orange PTA's events, the district calendar, and community schedules in one place.
 ---
+{% comment %}
+GitHub Pages builds with Jekyll 3.10, whose where_exp filter cannot take "and"/"or" or a bare
+variable, so the embed list is built with a plain for/if loop (core Liquid only). The outer tags
+here deliberately do NOT trim whitespace: trimming swallowed the blank line after the heading and
+kramdown folded the first paragraph into the H1.
+{% endcomment %}
+{% capture srcs %}
+  {%- for c in site.data.calendars -%}{%- if c.google_id -%}&src={{ c.google_id | url_encode }}&color={{ c.color | url_encode }}{%- endif -%}{%- endfor -%}
+{% endcapture %}
 
 # West Orange PTA calendars
 
-{%- comment -%}
-GitHub Pages builds with Jekyll 3.10, whose where_exp filter cannot take "and"/"or" or a bare
-variable, so both lists are built with plain for/if loops (core Liquid only).
-{%- endcomment -%}
-{%- capture srcs -%}
-  {%- for c in site.data.calendars -%}{%- if c.google_id -%}&src={{ c.google_id | url_encode }}&color={{ c.color | url_encode }}{%- endif -%}{%- endfor -%}
-{%- endcapture -%}
-{%- capture pending_raw -%}
-  {%- for c in site.data.calendars -%}{%- if c.google_id == nil and c.ics == nil -%}{{ c.name }}|{%- endif -%}{%- endfor -%}
-{%- endcapture -%}
-{%- assign pending = pending_raw | split: "|" -%}
+**An experiment.** One calendar for the whole district: each PTA's events in its own color, plus the school district's calendar and selected community schedules. Today only the Mount Pleasant calendar is live; the others are placeholders so the shape of the idea is visible. Use the dropdown in the top-right of the calendar to show or hide individual calendars.
 
-One calendar for the whole district: each PTA's events in its own color, plus the school district's calendar and selected community schedules. Use the dropdown in the top-right of the calendar to show or hide individual calendars.
-
-<iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&showPrint=0&showCalendars=1&showTz=0{{ srcs }}" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no" title="West Orange PTA district calendar"></iframe>
+<iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&showPrint=0&showCalendars=1&showTz=0{{ srcs | strip }}" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no" title="West Orange PTA district calendar"></iframe>
 
 ## Each calendar on its own
 
-Every calendar below can be viewed alone, added to your own Google Calendar, or subscribed to from Apple Calendar, Outlook, or any app that reads iCalendar (ICS) links.
+Every live calendar can be viewed alone, added to your own Google Calendar, or subscribed to from Apple Calendar, Outlook, or any app that reads iCalendar (ICS) links.
 
 <table class="calendars">
   <thead>
@@ -45,7 +42,7 @@ Every calendar below can be viewed alone, added to your own Google Calendar, or 
         <a href="https://calendar.google.com/calendar/r?cid={{ c.ics | url_encode }}">Add to Google Calendar</a> ·
         <a href="{{ c.ics }}">ICS</a>
       {%- else %}
-        <em>Coming soon</em>
+        <em>Placeholder</em>
       {%- endif %}
       {%- if c.site %} · <a href="{{ c.site }}">Website</a>{% endif %}
       </td>
@@ -54,24 +51,19 @@ Every calendar below can be viewed alone, added to your own Google Calendar, or 
   </tbody>
 </table>
 
-## For PTA leaders
+## How this could work
 
-This calendar is a free service run by Mount Pleasant PTA for the {{ site.org.council_name }}. Each PTA keeps full control of its own calendar; the shared page just shows them side by side.
+Nothing here is adopted yet; this page is a proof of concept for the {{ site.org.council_name }} to look at. If it catches on, the idea is simple: every PTA keeps full control of its own calendar, and this page just shows them side by side.
 
-**Getting your PTA's calendar.** Email [{{ site.org.email }}](mailto:{{ site.org.email }}) with the Google account (Gmail or Workspace) of the person who will manage events. You receive a calendar that is already public and already on this page, with permission to add, edit, and delete events. Share it onward with other board members yourself; ownership stays with the shared WOPTA account so nothing is lost when officers change.
+**One calendar per PTA.** Each PTA would get a Google calendar of its own, public, already on this page, with its board given permission to add, edit, and delete events. Ownership would sit with a shared account so nothing is lost when officers change, and each board could share it onward with its own volunteers.
 
-**Putting it on your own website.** Every calendar has its own embed. Copy the snippet below, replacing `CALENDAR_ID` with the ID shown in the "View" link for your PTA above:
+**On your own website.** Every calendar has its own embed. The snippet would be the same for everyone, with `CALENDAR_ID` swapped for the ID in that PTA's "View" link:
 
 ```html
 <iframe src="https://calendar.google.com/calendar/embed?src=CALENDAR_ID&ctz=America%2FNew_York"
         style="border:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 ```
 
-**Sharing with families.** Send them the "Add to Google Calendar" link for your PTA, or the ICS link for Apple and Outlook users. Events you add show up for everyone within minutes.
+**For families.** The "Add to Google Calendar" link puts a PTA's events into a parent's own calendar, and the ICS link does the same for Apple and Outlook. Events added later show up on their own; nobody has to re-subscribe.
 
-**Adding a community calendar.** Any organization that publishes a public ICS feed (the school district does) can be included. Anyone can propose one by editing [the calendar list on GitHub](https://github.com/mpe-wopta/mpe-wopta.github.io/edit/main/_data/calendars.yml) or by emailing us.
-
-{%- if pending.size > 0 %}
-
-Calendars still to be set up: {{ pending | join: ", " }}.
-{%- endif %}
+**Community calendars.** Any organization that publishes a public ICS feed can be included; the school district already does, which is why its calendar is live here. The list of calendars is [a plain text file on GitHub](https://github.com/mpe-wopta/mpe-wopta.github.io/blob/main/_data/calendars.yml), so adding one is a small edit.
