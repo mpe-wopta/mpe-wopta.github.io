@@ -1,0 +1,89 @@
+# Calendars shown on /calendar. One entry per PTA plus community feeds.
+#
+# Fields:
+#   key        short slug, used for anchors
+#   name       display name
+#   kind       pta | council | district | community
+#   color      hex color used in the combined embed (Google Calendar palette values render best)
+#   google_id  the Google Calendar ID (looks like an email address, or ...@group.calendar.google.com).
+#              Leave the key out until the calendar exists and is set to public; the page then shows
+#              the entry as "coming soon" instead of adding it to the embed.
+#   ics        a public iCalendar URL for feeds that live outside Google (district, sports leagues)
+#   site       the organization's own website, if any
+#
+# To add or change a calendar, edit this file and open a pull request ("Improve this page" in the footer).
+
+- key: mpe
+  name: Mount Pleasant Elementary PTA
+  kind: pta
+  color: "#039BE5"
+  google_id: woptaorg@gmail.com
+  site: https://mountp0303.givebacks.com/
+
+- key: gregory
+  name: Gregory Elementary PTA
+  kind: pta
+  color: "#33B679"
+
+- key: hazel
+  name: Hazel Avenue Elementary PTA
+  kind: pta
+  color: "#8E24AA"
+
+- key: kelly
+  name: Kelly Elementary PTA
+  kind: pta
+  color: "#E67C73"
+
+- key: redwood
+  name: Redwood Elementary PTA
+  kind: pta
+  color: "#F6BF26"
+
+- key: stcloud
+  name: St. Cloud Elementary PTA
+  kind: pta
+  color: "#F4511E"
+
+- key: washington
+  name: Washington Elementary PTA
+  kind: pta
+  color: "#0B8043"
+
+- key: edison
+  name: Edison Middle School PTA
+  kind: pta
+  color: "#3F51B5"
+
+- key: liberty
+  name: Liberty Middle School PTA
+  kind: pta
+  color: "#AD1457"
+
+- key: roosevelt
+  name: Roosevelt Middle School PTA
+  kind: pta
+  color: "#009688"
+
+- key: wohs
+  name: West Orange High School PTA
+  kind: pta
+  color: "#795548"
+
+- key: wocpta
+  name: West Orange Council of PTAs
+  kind: council
+  color: "#D50000"
+
+- key: district
+  name: West Orange Public Schools (district calendar)
+  kind: district
+  color: "#616161"
+  ics: https://www.woboe.org/fs/calendar-manager/events.ics?calendar_ids[]=2
+  site: https://www.woboe.org/calendar
+
+- key: mtl
+  name: Mountain Top League (youth sports)
+  kind: community
+  color: "#7986CB"
+  site: https://www.mountaintopleague.com/

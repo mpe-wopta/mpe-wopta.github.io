@@ -1,0 +1,30 @@
+<div class="org-details">
+  <dl>
+    <dt>Legal name</dt>
+    <dd>{{ site.org.legal_name }}</dd>
+
+    <dt>Tax status</dt>
+    <dd>Public charity exempt from federal income tax under Internal Revenue Code Section 501(c)(3), effective {{ site.org.exempt_since }}. Contributions are tax-deductible to the extent allowed by law.</dd>
+
+    <dt>Charity ID / EIN</dt>
+    <dd>{{ site.org.ein }}</dd>
+
+    <dt>NJ Charities Registration</dt>
+    <dd>{{ site.org.nj_charity_reg }}</dd>
+
+    <dt>NJ nonprofit corporation ID</dt>
+    <dd>{{ site.org.nj_corp_id }}</dd>
+
+    <dt>Address</dt>
+    <dd>{{ site.org.address }} ({{ site.org.school }})</dd>
+
+    <dt>Email</dt>
+    <dd><a href="mailto:{{ site.org.email }}">{{ site.org.email }}</a></dd>
+
+    <dt>Officers</dt>
+    <dd><a href="{{ site.org.officers_url }}">Current executive board</a> (kept up to date on our original site)</dd>
+
+    <dt>Websites</dt>
+    <dd><a href="{{ site.url }}">wopta.org</a> (this site) and <a href="{{ site.org.official_site }}">{{ site.org.official_site | remove: 'https://' | remove_first: '/' }}</a> (our original site, which links back here)</dd>
+  </dl>
+</div>

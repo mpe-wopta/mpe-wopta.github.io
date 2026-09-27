@@ -12,19 +12,135 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     padding: 20px;
+    color: #222;
+}
+
+header {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px 22px;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+nav a {
+    color: #1a4a8a;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
 }
 
 /* Main content styling */
 main {
-    text-align: center;
     margin: 20px auto;
     max-width: 800px;
+}
+
+main h1, main h2, main h3 {
+    margin-top: 1.4em;
+    margin-bottom: 0.4em;
+}
+
+main h1:first-child {
+    margin-top: 0.4em;
+}
+
+main p, main ul, main ol, main pre, main table {
+    margin-bottom: 1em;
+}
+
+main ul, main ol {
+    padding-left: 1.5em;
+}
+
+main a {
+    color: #1a4a8a;
+}
+
+main iframe {
+    display: block;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 1em;
+}
+
+main pre {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    padding: 10px;
+    overflow-x: auto;
+    font-size: 0.9em;
+}
+
+main code {
+    background: #f4f4f4;
+    padding: 0 3px;
+}
+
+/* Organization details block */
+.org-details dl {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 6px 16px;
+    margin-bottom: 1em;
+}
+
+.org-details dt {
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .org-details dl {
+        grid-template-columns: 1fr;
+    }
+    .org-details dd {
+        margin-bottom: 8px;
+    }
+}
+
+/* Calendar list */
+table.calendars {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table.calendars th, table.calendars td {
+    text-align: left;
+    padding: 6px 8px;
+    border-bottom: 1px solid #ddd;
+    vertical-align: top;
+}
+
+.swatch {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    margin-right: 4px;
+    vertical-align: middle;
 }
 
 /* Footer styling */
 footer {
     text-align: center;
-    margin-top: 20px;
+    margin: 30px auto 0;
+    max-width: 800px;
+    border-top: 1px solid #ddd;
+    padding-top: 12px;
+    font-size: 0.9em;
+}
+
+footer .legal {
+    color: #555;
 }
 
 footer a {

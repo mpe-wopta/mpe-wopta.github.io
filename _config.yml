@@ -1,1 +1,31 @@
+title: WOPTA — West Orange PTAs
+description: Mount Pleasant PTA's home on the web, and a shared calendar for PTAs across West Orange, New Jersey.
+url: https://wopta.org
 theme: minima
+
+# Organization details shown on the About page and in the footer of every page.
+# Everything here is public record (IRS determination letter, NJ Division of Revenue filings,
+# NJ Charities Registration). Keep sensitive material (bank letters, personal phones) out of this repo.
+org:
+  name: Mount Pleasant PTA
+  legal_name: Mount Pleasant PTA, a NJ Nonprofit Corporation
+  school: Mount Pleasant Elementary School
+  status: 501(c)(3) public charity
+  ein: 22-3532474
+  exempt_since: March 20, 2025
+  nj_charity_reg: CH4734700
+  nj_corp_id: "0450015359"
+  address: 9 Manger Rd, West Orange, NJ 07052
+  email: mtpleasantpta.info@gmail.com
+  official_site: https://mountp0303.givebacks.com/
+  officers_url: https://mountp0303.givebacks.com/w/Officers
+  facebook: https://www.facebook.com/groups/mtpleasantpta
+  council_name: West Orange Council of PTAs
+  council_email: WOCPTA@gmail.com
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+  - vendor
