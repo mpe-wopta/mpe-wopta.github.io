@@ -3,19 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title | escape }}</title>
+    <title>{{ page.title | escape }} · {{ site.org.name }}</title>
+    <meta name="description" content="{{ page.description | default: site.description | escape }}">
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 <header>
-    <img src="Banner.png" style="width: 100%; height: auto;" alt="Banner">
+    <a href="{{ '/' | relative_url }}"><img src="{{ '/Banner.png' | relative_url }}" style="width: 100%; height: auto;" alt="{{ site.org.name }} banner"></a>
+    <nav>
+        <a href="{{ '/' | relative_url }}">Home</a>
+        <a href="{{ '/calendar/' | relative_url }}">District calendar</a>
+        <a href="{{ '/about/' | relative_url }}">About</a>
+        <a href="{{ site.org.official_site }}">Membership &amp; store</a>
+        <a href="{{ site.org.facebook }}"><i class="fab fa-facebook"></i> Facebook</a>
+    </nav>
 </header>
 <main>
     {{ content }}
 </main>
 <footer>
+    <p class="legal">
+        {{ site.org.legal_name }} is a {{ site.org.status }}. EIN {{ site.org.ein }}. {{ site.org.address }}.
+        wopta.org is owned and operated by {{ site.org.name }}.
+    </p>
     <p>
+        <a href="{{ '/about/' | relative_url }}">About us</a> ·
+        <a href="mailto:{{ site.org.email }}">Contact</a> ·
         <a href="https://github.com/mpe-wopta/mpe-wopta.github.io/edit/main/{{ page.path }}">
             <i class="fab fa-github"></i> Improve this page on GitHub
         </a>
