@@ -11,6 +11,8 @@
 #   ics        a public iCalendar URL for feeds that live outside Google (district, sports leagues)
 #   site       the organization's own website, if any
 #
+# PTA keys match _data/ptas.yml, the PTA registry.
+#
 # To add or change a calendar, edit this file and open a pull request ("Improve this page" in the footer).
 
 - key: mpe
@@ -26,7 +28,7 @@
   color: "#33B679"
 
 - key: hazel
-  name: Hazel Avenue Elementary PTA
+  name: Hazel Elementary PTA
   kind: pta
   color: "#8E24AA"
 
@@ -40,7 +42,7 @@
   kind: pta
   color: "#F6BF26"
 
-- key: stcloud
+- key: cloud
   name: St. Cloud Elementary PTA
   kind: pta
   color: "#F4511E"
@@ -50,17 +52,17 @@
   kind: pta
   color: "#0B8043"
 
-- key: edison
+- key: ems
   name: Edison Middle School PTA
   kind: pta
   color: "#3F51B5"
 
-- key: liberty
+- key: lms
   name: Liberty Middle School PTA
   kind: pta
   color: "#AD1457"
 
-- key: roosevelt
+- key: rms
   name: Roosevelt Middle School PTA
   kind: pta
   color: "#009688"
