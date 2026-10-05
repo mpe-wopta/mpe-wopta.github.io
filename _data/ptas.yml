@@ -1,0 +1,132 @@
+# The PTA registry: one row per PTA in the West Orange district, and the single definition
+# that the site, the Workspace accounts, and later Knarr and Leidangr all read.
+#
+# Fields:
+#   key        canonical short name. It is the Workspace account (<key>@wopta.org), the planned
+#              subdomain (<key>.wopta.org), and the scope id elsewhere (group/pta-<key>).
+#              Never renamed once an account exists.
+#   name       what the PTA calls itself, where known
+#   school     the school it serves
+#   level      elementary | middle | high | council
+#   aliases    extra addresses that deliver to the account; added when a PTA asks
+#   account    not-created | placeholder | stewarded
+#                placeholder: the account exists and the Council keeps its calendar,
+#                  entering or mirroring events as needed
+#                stewarded: at least two of the PTA's own board are delegates
+#   calendar   none | own | mirror
+#                own: events are entered in this account's public calendar
+#                mirror: the PTA runs a calendar elsewhere and this one copies it
+#   school_site the district's page for the school
+#   notes      anything else worth knowing
+#
+# Contact details for each PTA are deliberately not kept here; this file is public.
+
+- key: gregory
+  name: Gregory School PTA
+  school: Gregory Elementary School
+  level: elementary
+  aliases: []
+  account: not-created
+  calendar: none
+  school_site: https://ges.woboe.org/
+
+- key: hazel
+  name: Hazel PTA
+  school: Hazel Avenue Elementary School
+  level: elementary
+  aliases: []
+  account: not-created
+  calendar: none
+  school_site: https://haes.woboe.org/
+
+- key: kelly
+  name: Kelly PTA
+  school: Kelly Elementary School
+  level: elementary
+  aliases: []
+  account: not-created
+  calendar: none
+  school_site: https://kes.woboe.org/
+
+- key: mpe
+  name: Mount Pleasant PTA
+  school: Mount Pleasant Elementary School
+  level: elementary
+  aliases: []
+  account: not-created
+  calendar: none
+  school_site: https://mpes.woboe.org/
+  notes: Also covers the families of the pre-K early learning site housed at Mount Pleasant, which has no PTA of its own.
+
+- key: redwood
+  name: Redwood PTA
+  school: Redwood Elementary School
+  level: elementary
+  aliases: []
+  account: not-created
+  calendar: none
+  school_site: https://res.woboe.org/
+
+- key: cloud
+  name: St. Cloud Elementary School PTA
+  school: St. Cloud Elementary School
+  level: elementary
+  aliases: []
+  account: not-created
+  calendar: none
+  school_site: https://sces.woboe.org/
+
+- key: washington
+  name: Washington PTA
+  school: Washington Elementary School
+  level: elementary
+  aliases: []
+  account: not-created
+  calendar: none
+  school_site: https://wes.woboe.org/
+  notes: Also covers the families of the pre-K early learning site housed at Washington, which has no PTA of its own.
+
+- key: ems
+  name: Edison Middle School PTA
+  school: Edison Middle School
+  level: middle
+  aliases: []
+  account: not-created
+  calendar: none
+  school_site: https://ems.woboe.org/
+
+- key: lms
+  name: Liberty Middle School PTA
+  school: Liberty Middle School
+  level: middle
+  aliases: []
+  account: not-created
+  calendar: none
+  school_site: https://lms.woboe.org/
+
+- key: rms
+  name: Roosevelt PTA
+  school: Roosevelt Middle School
+  level: middle
+  aliases: []
+  account: not-created
+  calendar: none
+  school_site: https://rms.woboe.org/
+
+- key: wohs
+  name: West Orange High School PTA
+  school: West Orange High School
+  level: high
+  aliases: []
+  account: not-created
+  calendar: none
+  school_site: https://wohs.woboe.org/
+
+- key: wocpta
+  name: West Orange Council of PTAs
+  school: district-wide
+  level: council
+  aliases: []
+  account: not-created
+  calendar: none
+  school_site: https://www.woboe.org/
