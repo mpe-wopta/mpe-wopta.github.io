@@ -44,8 +44,8 @@
   school: Kelly Elementary School
   level: elementary
   aliases: []
-  account: not-created
-  calendar: none
+  account: placeholder
+  calendar: own
   school_site: https://kes.woboe.org/
 
 - key: mpe
@@ -53,8 +53,8 @@
   school: Mount Pleasant Elementary School
   level: elementary
   aliases: []
-  account: not-created
-  calendar: none
+  account: placeholder
+  calendar: own
   school_site: https://mpes.woboe.org/
   notes: Also covers the families of the pre-K early learning site housed at Mount Pleasant, which has no PTA of its own.
 

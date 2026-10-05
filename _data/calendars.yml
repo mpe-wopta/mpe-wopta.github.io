@@ -22,6 +22,14 @@
   google_id: woptaorg@gmail.com
   site: https://mountp0303.givebacks.com/
 
+# Temporary: the Workspace-hosted Mount Pleasant calendar, shown alongside the original while
+# the two approaches are compared. One of the two entries goes away afterwards.
+- key: mpe-workspace
+  name: Mount Pleasant Elementary PTA (Workspace trial)
+  kind: pta
+  color: "#7986CB"
+  google_id: c_8f2ebc991e7652f07374961c67fe114f43a52ed1837c1992f0980e062bd6c4f2@group.calendar.google.com
+
 - key: gregory
   name: Gregory Elementary PTA
   kind: pta
@@ -36,6 +44,7 @@
   name: Kelly Elementary PTA
   kind: pta
   color: "#E67C73"
+  google_id: c_f316c0f1e2c6d0f15a2b6d7d7d2f38de7539aee48ca41ccf683424953c58e00b@group.calendar.google.com
 
 - key: redwood
   name: Redwood Elementary PTA
